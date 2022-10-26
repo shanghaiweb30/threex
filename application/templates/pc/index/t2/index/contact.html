@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>联系我们 - {:sysconf('site_name')}</title>
+    <meta name="keywords" content="{:sysconf('site_keywords')}" />
+    <meta name="description" content="{:sysconf('site_desc')}" />
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <link rel="stylesheet" href="/static/muban/index/css/glide.css" />
+    <link rel="stylesheet" href="/static/muban/index/css/iconfont.css">
+    <link rel="stylesheet" href="/static/muban/index/css/animate.min.css">
+    <link rel="stylesheet" href="/static/muban/index/css/qietu.css">
+    <link rel="stylesheet" href="/static/muban/index/css/style.css">
+    <link rel="stylesheet" href="/static/muban/index/css/responsive.css">
+</head>
+<body class="contact-bg">
+
+<header class="header">
+    <div style='margin: 0 5%;'>
+        <div class="hd-logo">
+            <a href="/"><img src="{:sysconf('site_logo')}" width="220px"></a>
+        </div>
+        <div class="nav-wp">
+             <div class="hd-btns"> 
+              {if session('?merchant.user')}
+              <a href="/merchant/index" class="login" >商户中心</a><a  href="/logout"  class="register">退出登录</a>
+                                        {else}
+                                <a href="/login" class="login">登录</a>  <a href="/register" class="register">注册</a>
+              {/if}
+          </div>
+            <div class="hd-nav">
+                <ul>
+{volist name="nav" id="vo"}
+            <li><a href="{$vo.url}" {eq name="vo.target" value="1"}target="_blank"{/eq}>{$vo.title}</a></li>
+            {/volist}
+                                    </ul>
+            </div>
+        </div>
+
+        <div class="gh">
+            <a href="#"></a>
+        </div>
+    </div>
+</header>
+
+<div class="banner banner-we">
+    <div class="wrapper wow fadeInUp">
+        <h2>联系我们</h2>
+        <p>常见问题解答，一次扫清所有疑问</p>
+    </div>
+</div>
+<div class="contact  wow fadeInUp" data-wow-delay="0.5s">
+    <div class="wrapper">
+        <div class="contact-l">
+            <ul>
+                <li>
+                    <i class="iconfont icon-qq"></i>
+                    <label>客服QQ ：</label>
+                    {:sysconf('site_info_qq')}                </li>
+                <li>
+                    <i class="iconfont icon-msnui-telephone"></i>
+                    <label>咨询热线：</label>
+                    {:sysconf('site_info_tel')}                </li>
+                <li>
+                    <i class="iconfont icon-htmal5icon05"></i>
+                    <label>联系邮箱：</label>
+                    {:sysconf('site_info_email')}                </li>
+                <li>
+                    <i class="iconfont icon-dizhi"></i>
+                    <label>公司地址：</label>
+                    {:sysconf('site_info_address')}                </li>
+                              <li>
+                    <i class="iconfont icon-weixin"></i>
+                    <label>扫码关注：</label>
+                    微信公众号获取更多资讯                </li>
+            </ul>
+        </div>
+        <div class="contact-r">
+            <img src="https://open.weixin.qq.com/qr/code?username=scanrc" style="width:300px;height:300px">
+            <!--<pre>扫码关注✫微信公众号
+微信搜索✫笙畅工作室</pre>-->
+        </div>
+    </div>
+</div>
+      <link rel="stylesheet" href="//at.alicdn.com/t/font_1039468_qq4tqy6joz.css">
+<script type="text/javascript" src="/static/muban/index/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/iconfont.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/wow.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.glide.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/script.js"></script>
+<script type="text/javascript" src="/static/app/js/layer.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.easydropdown.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.countdown.min.js"></script>
+</body>
+</html>
+

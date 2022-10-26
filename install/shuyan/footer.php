@@ -1,0 +1,1 @@
+<div class="footer"> 扎兰屯市姝妍计算机服务有限公司 <a href="http://www.a8tg.com" target="_blank">爱发资源网独家提供</a></div>

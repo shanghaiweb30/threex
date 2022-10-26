@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{:sysconf('site_name')}{:sysconf('site_subtitle')}</title>
+    <meta name="keywords" content="{:sysconf('site_keywords')}" />
+    <meta name="description" content="{:sysconf('site_desc')}" />
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <!-- Bootstrap -->
+	<link rel="icon" href="/favicon.png" type="image/png">
+	<link href="/static/app/a802/css/bootstrap.min.css" rel="stylesheet">
+
+	<script src="/static/app/a802/js/jquery-2.2.1.min.js"></script>
+	<script src="/static/app/a802/js/layer.js"></script>
+	<script src="/static/app/a802/js/aos.js"></script>
+	<script src="/static/app/a802/js/main.js"></script>
+	<link rel="stylesheet" href="/static/app/a802/css/aos.css">
+	<link href="/static/app/a802/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/static/app/a802/css/index1200.css" rel="stylesheet" type="text/css" />
+	<link href="/static/app/a802/css/index960.css" rel="stylesheet" type="text/css" />
+	<link href="/static/app/a802/css/index720.css" rel="stylesheet" type="text/css" />
+	<script src="/static/app/a802/js/clipboard.min.js"></script>
+    <script src="__RES__/app/js/layer.js"></script>
+	<style>
+	
+		.forwap{display:none;padding:20px}
+		@media screen and (max-width:1200px){
+			.forpc{display:none}
+			.forwap{display:block;}
+			.forwap table{border-collapse: collapse;width:100%}
+			.forwap table td{border:1px solid #ddd;height:40px;padding:5px 10px}
+			.forwap table td:first-child{background:#eaeaea;color:#666;font-size:12px}
+			.head{width:95%}
+		}
+		.QueKO a{text-decoration: none}
+		.m-order {
+    margin: 30px auto 0;
+    border-radius: 30px;
+    background-color: #fff;
+    padding: 30px 10px 30px 40px;
+}
+.m-order h3 {
+    font-size: 24px;
+    color: #333;
+}
+.m-order p {
+    font-size: 16px;
+    margin-top: 5px;
+    line-height: 1.8;
+}
+@media (max-width: 800px){
+	.QueT1 {
+		width: 100%;
+	}
+}
+
+
+.m-help2{padding:50px 0}
+.QueKO{ background:#fff; overflow:hidden; margin:auto;margin-top:35px; padding-bottom:35px; border-radius:8px;width:100%;border:1px solid #eaeaea}
+.QueKO a,.QueKO a:hover{text-decoration: none}
+.m-help-tit{margin-top:0px}
+.QueKO{padding:50px 80px}
+.QueKO ul li{width:45%;display:inline-block;margin:10px 0}
+.my-btn{background:#2890EC;display:inline-block;color:#fff;padding:3px 10px;border-radius:3px}
+.my-btn:hover{color:#fff}
+.remark{margin-top:30px}
+.remark p{margin:10px 0}
+.remark p strong{font-weight:400;color:red}
+
+@media (max-width:1000px){
+	.QueKO{padding:30px;width:100%}
+	.QueKO ul li{width:100%;display:inline-block;margin:10px 0}
+	.m-help-search button{width:93%;margin-top:20px}
+}
+
+.QueKO table{width:100%;border:0;}
+.QueKO table th{background:#fafafa;height:40px;border-bottom:1px solid #ddd;text-align:center}
+.QueKO table td{height:40px;border:0;border-bottom:1px solid #ddd;text-align:center}
+.view-wap{display:none}
+
+@media (max-width:1000px){
+	.view-wap{display: block}
+	.view-pc{display:none}
+}
+	</style>
+
+<body class="QuerB">
+ {include file="./header"} 
+		
+		
+	<div class="checkcode" id="checkcode">
+		<div class="img" id="img-code">
+		</div>
+		<div class="txt">
+			<input type="text" name="" id="chkcode_code" value="">
+		</div>
+	</div>
+
+
+	<div class="QueT">		
+
+		<a data-index="2" href="javascript:void(0)" id="cx2" onClick="settype(2)" class="QueTao">订单查询<i></i></a>
+        <a data-index="3" href="javascript:void(0)" id="cx3" onClick="settype(3)" >联系人查询<i></i></a>
+	
+	</div>
+<input type="hidden" id="query-type" value="{$querytype}">
+	<div class="QueD QueT1" style=" display:block;">
+		<div class="search">
+			<input type="text" id="orderid_input" placeholder="请输入T开头的订单号或联系方式查询" value="" class="searI fl" />
+			<a href="JavaScript:;" class="backB2 searA fr" onClick="orderid_or_contact()"><span>查询</span></a>
+			<div class="clear"></div>
+		</div>
+        	<div style="text-align:center;line-height:30px;margin-top:20px">
+			<p>免责声明：平台为次日结算，款项结算给商户后所出现的售后问题请自行与卖家协商。订单投诉：通过订单号查询订单，可在【订单投诉】等待平台处理。</p>
+			<p style="color:red">防骗提示：平台为24点解冻卖家资金，卡密有问题的请在24点前点击投诉按钮，否则我们将打款给卖家、或避开24点前选择00:01后购买卡密防止被骗！</p>
+		</div>
+        
+         {if $trade_no!==null}
+         
+            {if empty($order)}
+            {if $is_verify} <div class="m-order"><div style="font-size:24px; text-align:center">不存在该订单</div></div>{/if}
+            {else/}
+            <div class="m-order">
+            <div class="main_box">
+                <h3><i class="iconfont icon-dingdan"></i> 订单日期：{$order.create_at|date="Y-m-d H:i:s",###}</h3>
+                <p>订单编号：<b>{$order.trade_no}</b></p>
+                <p>付款方式：<b>{:get_paytype_name($order.paytype)}</b></p>
+                <p>付款信息：<b>
+                        <lable style="color: orangered" id="paystatus">{if $order.status==1}付款成功<EMBED src="/static/xiaoxi/mj.mp3" autostart="true" loop="true" width="0" height="0">{else/}未付款{/if}</lable>
+                    </b></p>
+                <!-- <p>订单状态：<b>正常</b></p> -->
+                <p>订单金额：<b>{$order.total_price}</b></p>
+                <p>实付款：<b>{$order.total_price}</b></p>
+                <p>卖家QQ：<b><a target="_blank" href="//wpa.qq.com/msgrd?v=3&amp;uin={$order.user.qq}&amp;site=qq&amp;menu=yes">{$order.user.qq}</a></b></p>
+                {if condition="isset($canComplaint) && $canComplaint" }
+                <p><a style="padding:5px 8px;background-color:#678cf7;color:white" href="/complaint?trade_no={$order.trade_no}"target="_blank">订单投诉</a>
+				<a style="padding:5px 8px;background-color:#678cf7;color:white" href="index/order/dckm?trade_no={$order.trade_no}" target="_blank">导出卡密</a>
+				</p>
+                {/if}
+                <p style="float:none;clear:both">卡密信息：
+                    <b id="tips0" style="color: rgb(251,55,55)">
+                    </b>
+                    <b id="cardinfo0" style="color: rgb(251,55,55)">
+                    </b>
+                </p>
+                <div class="notice">
+                    <p>
+                        <font color="red">平台提示：</font>有疑问请及时联系客服QQ：{:sysconf('site_info_qq')}
+                        ，如遇到虚假交易请在当天22点前联系客服协助处理或者点击上方投诉按钮。
+                         
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <script>
+                var flag = true;
+                var loading = '';
+                var stop = false;
+                $(function () {
+                    getgoods('{$order.trade_no}', '0');
+                    /*{eq name = "order.status" value = "0"}*/
+                    layer.msg('正在获取支付状态 ...', function () {
+                        loading = layer.load(1, {
+                            shade: [0.1, '#fff'] //0.1透明度的白色背景
+                        });
+                    });
+                    setTimeout('oderquery(1)', 3000);
+                    window.setTimeout("request_stop()", 30000);
+                    /*{/eq}*/
+                });
+            </script>
+            </div>
+            {/if}
+            
+            {/if}
+
+	
+
+			<div class="m-order">
+			<h3>{:sysconf('site_name')}防骗提醒：</h3>
+			<p>1、卡密为“联系QQ拿货，加QQ群拿货” </p>
+			<p>2、卡密为“付款成功，等待充值” </p>
+			<p>3、购买的商品有问题，卖家且不售后 </p>
+			<p>4、以各种理由推脱到第二天遇到以上或售后问题， 请及时联系平台QQ：{:sysconf('site_info_qq')} 或者 查询后点击投诉卖家按钮。</p>
+		</div>
+				
+			
+	</div>
+
+
+<style>
+#tips-text{display:none;}
+#tips-text-2{padding-left:25px;list-style:decimal}
+#tips-text-2 li{list-style:decimal;margin:5px 0}
+.layui-layer-title{background-color:#fafafa;color:#f50000;border-bottom:1px solid #eaeaea;border-top:3px solid #f50000;font-size:16px}
+.layui-layer .layui-layer-btn .layui-layer-btn0 {border-color:#5baffd;background-color:#5baffd;width:100%;color:#fff;text-align:center;}
+.layui-layer-btn a,.layui-layer-btn0 a{height:30px;line-height:30px}
+.layui-layer-setwin{display:none}
+</style>
+<ol id="tips-text">
+<li>提示商品需要24小时后才能使用的，肯定是骗子</li>
+<li>没有卡号卡密，直接让加群联系群主或者卖家，肯定是骗子</li>
+<li>发货商品为实物商品，肯定是骗子</li>
+<li>订单投诉只支持当前24点前投诉，超过后就无法受理了</li>
+<li>如遇上述情况请及时在订单里面进行投诉，以免超过时效！</li>
+</ol>
+
+	</div>
+<script>
+            function getgoods(orderid, id) {
+                setTimeout(function () {
+                    $.getJSON('/checkgoods', {
+                        orderid: orderid,
+                        t: new Date().getTime(),
+                        token: "{$token}"
+                    }, function (data) {
+                        if (data) {
+                            $('#cardinfo' + id).html('<br>' + data.msg);
+                            if (data.status == 1) {
+                                $('#tips' + id).html('(已发货/购买数：<font color="green">' + data.quantity +
+                                    '</font>/' + data.quantity + ')');
+                            }
+                        }
+                    });
+                }, 1000);
+            };
+        </script>
+        <script>
+            function orderid_or_contact() {
+                var queryType = $('#query-type').val();
+                var input_val = $('#orderid_input').val() || '';
+
+                if (queryType != 1 && input_val == '') {
+                    if (queryType == 2) {
+                        layer.msg('订单号为空！', {
+                            icon: 2,
+                            time: 2000
+                        });
+                    } else {
+                        layer.msg('联系方式为空！', {
+                            icon: 2,
+                            time: 2000
+                        });
+                    }
+                } else {
+                    var needChkcode = "{:sysconf('order_query_chkcode')}";
+                    if (needChkcode == 1) {
+                        // $('#chkcode_img').show().attr('src', '/chkcode');
+                        chkcode(input_val, queryType);
+                    } else {
+                        window.location.href = '/orderquery?orderid=' + input_val + '&querytype=' + queryType;
+                    }
+                }
+            }
+
+            function oderquery(t) {
+                if (flag == false) return false;
+                var orderid = '{$trade_no}';
+                $.post('/pay/getOrderStatus', {
+                    orderid: orderid,
+                    token: "{$token}"
+                }, function (ret) {
+                    if (ret == 1) {
+                        layer.close(loading);
+                        flag = false;
+                        stop = true;
+                        $('#paystatus').html('付款成功');
+                        getgoods('{$trade_no}', '0');
+                    }
+                });
+                t = t + 1;
+                setTimeout('oderquery(' + t + ')', 3000);
+            }
+
+            function request_stop() {
+                if (stop == true) return false;
+                flag = false;
+                layer.close(loading);
+                layer.alert('系统未接收到付款信息，如您已付款请联系客服处理！');
+            }
+
+            function chkcode(input_val, queryType) {
+                layer.prompt({
+                    title: '请输入验证码',
+                    formType: 3
+                }, function (chkcode) {
+                    $.post('/orderquery/checkverifycode', {
+                        chkcode: chkcode,
+                        token:'{$token}'
+                    }, function (data) {
+                        if (data == 'ok') {
+                            layer.msg('验证码输入正确', {
+                                icon: 1
+                            }, function () {
+                                window.location.href = '/orderquery?orderid=' + input_val +
+                                    '&chkcode=' + chkcode + '&querytype=' + queryType;
+                                //                        window.parent.location.reload(); //刷新父页面
+                            });
+                        } else {
+                            layer.msg('验证码输入错误', {
+                                icon: 2,
+                                time: 3000
+                            }, function () {
+                                //                        window.parent.location.reload(); //刷新父页面
+                            });
+                        }
+
+                    });
+                });
+                $('.layui-layer-prompt .layui-layer-content').prepend($(
+                    '<img style="cursor:pointer;height: 60px;" id="chkcode_img" src="/chkcode" onclick="javascript:this.src=\'/chkcode\'+\'?time=\'+Math.random()">'
+                ))
+            }
+
+			$(document).ready(function () {
+			$(".QueT  a").each(function () {
+		        $this = $(this);
+		        if ($this[0].title == $('#query-type').val()) {
+		            $this.addClass("QueTao");
+					$('#query-type').val($this[0].title)
+		        }
+			});
+		});
+            var clipboard = new ClipboardJS('.btn');
+            clipboard.on('success', function(e) {
+                layer.msg('复制成功！', {
+                    icon: 1
+                });
+            });
+            clipboard.on('error', function(e) {
+                layer.msg('复制失败，请手动复制！', {
+                    icon: 2
+                });
+            });
+			
+			
+			
+			function settype(index){
+				$('#cx2').removeClass('QueTao');
+				$('#cx3').removeClass('QueTao');
+				$('#cx'+index).addClass('QueTao');
+				$('#query-type').val(index);
+			}
+        </script>
+	
+</body>
+
+</html>

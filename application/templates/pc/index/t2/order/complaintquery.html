@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>投诉查询 - {:sysconf('site_name')}</title>
+    <meta name="keywords" content="{:sysconf('site_keywords')}" />
+    <meta name="description" content="{:sysconf('site_desc')}" />
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <link rel="stylesheet" href="/static/muban/index/css/iconfont.css">
+    <link rel="stylesheet" href="/static/muban/index/css/animate.min.css">
+    <link rel="stylesheet" href="/static/muban/index/css/qietu.css">
+    <link rel="stylesheet" href="/static/muban/index/css/style.css">
+    <link rel="stylesheet" href="/static/muban/index/css/responsive.css">
+    <link rel="stylesheet" href="/static/muban/index/css/glide.css">
+</head>
+<body class="order-bg">
+
+<header class="header">
+    <div style='margin: 0 5%;'>
+        <div class="hd-logo">
+           <a href="/"><img src="{:sysconf('site_logo')}" width="220px"/></a>
+        </div>
+        <div class="nav-wp">
+            <div class="hd-btns"> 
+              {if session('?merchant.user')}
+              <a href="/merchant/index" class="login" >商户中心</a><a  href="/logout"  class="register">退出登录</a>
+                                        {else}
+                                <a href="/login" class="login">登录</a>  <a href="/register" class="register">注册</a>
+              {/if}
+          </div>
+            <div class="hd-nav">
+                <ul>
+{volist name="nav" id="vo"}
+            <li><a href="{$vo.url}" {eq name="vo.target" value="1"}target="_blank"{/eq}>{$vo.title}</a></li>
+            {/volist}
+                                    </ul>
+            </div>
+        </div>
+
+        <div class="gh">
+            <a href="#"></a>
+        </div>
+    </div>
+</header>
+
+<div class="srchbox">
+    <div class="wrapper">
+        <div class="srchbox-hd">
+            <ul class="clear">
+                <li><a href="#"> </a></li>
+                <li class="on"><a href="#">通过订单编号查询</a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+        <div class="srchbox-bd">
+            <form name='report' action="{:url('Index/order/complaintPass')}" method='get' onsubmit="return checker()">
+				<input type="hidden" name="token" value="{$token}">
+                <input type="text" name="trade_no" id="trade_no" class="text" value="{$Request.get.id}" placeholder="请输入查询订单号"/>
+                <input type="submit" class="btn" value="查 询"/>
+            </form>
+        </div>
+        <div class="srchbox-ft">
+            免责声明：平台为次日结算，款项结算给商户后所出现的售后问题请自行与卖家协商。<br />
+            订单投诉：通过订单号查询订单，可在【订单投诉】等待平台处理。
+        </div>
+    </div>
+</div>
+<div class="srchtxt">
+    <div class="wrapper">
+        <div class="txt">
+            <h4>{:sysconf('site_name')}防骗提醒：</h4>
+            <p>1、卡密为“联系QQ拿货，加QQ群拿货”  2、卡密为“付款成功，等待充值” 3、商品有问题，卖家不售后4、以各种理由推脱到第二天遇到以上或售后问题，请及时联系我们QQ客服：{:sysconf('site_info_qq')}</p>
+        </div>
+    </div>
+</div>
+<footer class="footer reg-footer">
+    <div class="wrapper">
+        <p>  {:sysconf('site_info_copyright')}        
+          <a style="color: #cedcf6;" href="javascript:void(0)" onclick="window.open('http://www.miitbeian.gov.cn/');" >
+                    {:htmlspecialchars_decode(sysconf('site_info_icp'))}</a>
+					</p>
+        <p>
+
+<!-- WPA start -->
+<!-- WPA start -->
+<!-- WPA end -->        </p>
+    </div>
+</footer>
+<script type="text/javascript" src="/static/muban/index/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/iconfont.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/wow.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.glide.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/script.js"></script>
+<script type="text/javascript" src="__RES__/app/js/layer.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.easydropdown.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.countdown.min.js"></script>
+<script>
+    function checker(){
+        var trade_no = $('[name=trade_no]').val();
+        if(trade_no.length === 0) {
+            layer.msg('请填写订单号');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>

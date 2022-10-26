@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{:sysconf('site_name')}{:sysconf('site_subtitle')}</title>
+    <meta name="keywords" content="{:sysconf('site_keywords')}" />
+    <meta name="description" content="{:sysconf('site_desc')}" />
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <!-- Bootstrap -->
+    <link href="__RES__/app/default/css/bootstrap.min.css?v=1.0.1" rel="stylesheet">
+    <link rel="stylesheet" href="__RES__/app/default/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__RES__/app/default/vendors/themify-icon/themify-icons.css">
+    <link rel="stylesheet" href="__RES__/app/default/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="__RES__/app/default/vendors/owl-carousel/animate.css">
+    <!--custom css-->
+    <link rel="stylesheet" href="__RES__/app/default/css/style.css?v=1.0.1">
+    <link rel="stylesheet" href="__RES__/app/default/css/responsive.css">
+    <script type="text/javascript" src="/static/layui/2.5.4/layui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/layui/2.5.4/css/layui.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        input, button, select, textarea{
+            line-height: normal;
+        }
+        .mh{
+            height: 115px;
+        }
+        .user_input textarea{
+            margin-top: 2px;
+            border: none;
+            background: none;
+            color: #33334f;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="100">
+    {include file="./default_header"}
+    <section class="shop_banner">
+    </section>
+    <section class="user-login">
+        <div class="user_form" style="margin: 10px auto 30px auto;">
+            <form role="form" method="post">
+                <input type="hidden" name="__token__" id="__token__" value="{$Request.token}" />
+                <div class="user_tab">
+                    <ul>
+                        <li class="actived" style="text-align: center;    width: 100%;">立即咨询方案</li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="user_input"><i class="iconfont icon-gerenzhongxin"></i><input type="text" name="username" id="username" placeholder="输入企业名称" autocomplete="off"></div>
+                <div class="user_input"><i class="iconfont icon-mima"></i><input type="text" name="mobile" id="mobile" placeholder="输入您的手机号" autocomplete="off"></div>
+                <div class="user_input mh"><i class="iconfont icon-mima"></i>
+                    <textarea name="remark" id="remark" cols="34" rows="6" placeholder="描述"></textarea>
+                </div>
+                <button class="sub" type="button">立即咨询</button>
+        </div>
+    </section>
+    {include file="./default_footer"}
+    <script src="__RES__/app/default/js/jquery-2.2.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__RES__/plugs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__RES__/app/default/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="__RES__/app/default/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="__RES__/app/default/js/wow.js"></script>
+    <script src="__RES__/app/default/js/custom.js"></script>
+</body>
+<script type="text/javascript">
+layui.use(['layer'], function() {
+    var layer = layui.layer;
+});
+
+function yuyue() {
+    var mobile = $("#mobile").val();
+    var username = $("#username").val();
+    var __token__ = $('#__token__').val();
+    var remark = $('#remark').val();
+    if (mobile.length < 11) {
+        layer.msg('请输入正确手机号');
+        return false;
+    }
+    var check = /^1[23456789]\d{9}$/;
+    if (!check.test(mobile)) {
+        layer.msg('请输入正确手机号');
+        return false;
+    }
+    $.ajax({
+        url: '/mobile_order',
+        data: {
+            mobile: mobile,
+            username: username,
+            __token__: __token__,
+            remark:remark,
+        },
+        type: 'POST',
+        dataType: 'json',
+        success: function(res) {
+            layer.msg(res.message);
+        }
+    })
+}
+$('.sub').click(function() {
+    yuyue();
+});
+</script>
+
+</html>

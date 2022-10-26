@@ -1,0 +1,410 @@
+{extend name="./content"}
+{block name="content"}
+<link rel="stylesheet" href="/static/admin/assets/bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet" href="/static/admin/assets/css/styles.css">
+<style>
+ .mbw {
+    margin-bottom: 0px !important;
+}
+.cl {
+    zoom: 1;
+}
+
+em, i {
+    font-style: normal;
+}
+.lib {
+    position: relative;
+    left: -10px;
+    width: 1200px
+}
+
+.lib li {
+    float: left;
+    margin: 0 0 10px 10px;
+    width: 100%;
+    height: 138px;
+}
+
+.lib li > div {
+    padding: 9px;
+    width: 100%;
+    border: #efefef 1px solid;
+    border-radius: 4px;
+    background: #efefef
+}
+
+.lib li p.list_cjimg {
+    float: left;
+    display: flex;
+    margin-right: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    background: #f4f4f4;
+    line-height: 80px;
+    justify-content: center;
+    align-items: center
+}
+
+.lib li p.list_cjimg img {
+    display: inline-block;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 4px;
+    vertical-align: middle
+}
+
+.lib li .t {
+    overflow: hidden;
+    height: 100px
+}
+
+.lib li .t h5 {
+    height: 28px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 28px;
+	overflow: hidden;
+}
+
+.lib li .t h6 {
+    font-weight: 400;
+    font-size: 12px
+}
+
+.lib li .t h6 em {
+    float: left;
+    font-size: 12px
+}
+
+.lib li .t h6 em i {
+    color: #999
+}
+
+.lib li .b {
+    margin-top: 10px;
+    padding-top: 7px;
+    height: 20px;
+    border-top: #ddd 1px dashed;
+    line-height: 20px
+}
+
+.lib li .b i {
+    margin-right: 3px;
+    color: #999
+}
+
+.lib li .b .y img {
+    margin-top: 2px
+}
+
+.free {
+    color: #093;
+    font-weight: 400
+}
+
+.price {
+    color: #f60;
+    font-weight: 400
+}
+
+.dz {
+    text-align: right;
+    font-size: 12px
+}
+
+.yd {
+    color: #bbb;
+    text-decoration: line-through
+}
+
+
+.lijs {
+    position: relative;
+    padding: 9px 9px 0;
+    width: 240px;
+    border: #ddd 1px solid;
+    border-top: none;
+    border-bottom: none;
+    background: #fff;
+    line-height: 20px
+}
+
+.lijs span {
+    display: inline-block;
+    overflow: hidden;
+    padding: 6px 8px;
+    width: 224px;
+    border-radius: 4px;
+    background: #f4f4f4
+}
+
+.lib li .t h5 b, .lib1 li .b h5 b {
+    float: right
+}
+
+.lib li .t h5 .price {
+    margin-right: 6px;
+    color: #f60;
+    font-weight: 400;
+    font-size: 14px
+}
+
+.lib li .t h5 .yd {
+    font-size: 12px
+}
+ </style>
+ <style type="text/css">
+#load{
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.5);
+	position:absolute;
+	left:0;
+	top:0;
+	display:none;
+}
+.loader{
+	width: 180px;
+	height: 180px;
+	/* border: 1px solid red; */
+	text-align: center;
+	position: absolute;
+	top: calc(50% - 70px);
+	left: calc(50% - 70px);
+	padding-top: 15px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	
+	
+}
+#loader-1{
+	width: 60px;
+	height: 60px;
+}
+.load-msg{
+	height: 40px;
+	line-height: 30px;
+	color: #fff;
+	font-size: 20px;
+	/* margin-top: 20px; */
+}
+svg path, svg rect {
+	fill: #17a085;
+}
+
+.corner {
+    position: relative;
+    border: 0px solid;
+  }
+
+  .corner::before {
+    position: absolute;
+    top: 0.3rem;
+    left: -0.5rem;
+    z-index: 1;
+    padding-right: 0.625rem;
+    font-weight: bold;
+    line-height: 0px;
+    color: #fff;
+    height: 0px;
+    border: 0.9375rem solid #ee7600;
+    border-right-color: transparent;
+    content: "已安装";
+    box-shadow: 0px 0.3125rem 0.3125rem -0.3125rem #000;
+  }
+
+  .corner::after {
+    content: "";
+    position: absolute;
+    top: 2.1875rem;
+    left: -0.5rem;
+    border: 0.25rem solid #89540c;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  
+  
+  .cornerx {
+    position: relative;
+    border: 0px solid;
+  }
+
+  .cornerx::before {
+    position: absolute;
+    top: 0.3rem;
+    left: -0.5rem;
+    z-index: 1;
+    padding-right: 0.625rem;
+    font-weight: bold;
+    line-height: 0px;
+    color: #fff;
+    height: 0px;
+    border: 0.9375rem solid #ee7600;
+    border-right-color: transparent;
+    content: "有更新";
+    box-shadow: 0px 0.3125rem 0.3125rem -0.3125rem #000;
+  }
+
+  .cornerx::after {
+    content: "";
+    position: absolute;
+    top: 2.1875rem;
+    left: -0.5rem;
+    border: 0.25rem solid #89540c;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+</style>
+<script src="/static/admin/assets/bootstrap/js/bootstrap.min.js"></script>
+<table width="100%" border="0">
+  <tr>
+    <td ><p><span style="font-size:20px;"><strong><span style="color:#FF0000;">说明：</span></strong></span></p></td>
+    <td ><p><span style="color:#000000;"><span style="font-size:20px;"><strong>对插件不会使用的用户，点击这里进入插件中心（<a href="https://www.yc88.net/case.html" target="_blank">进点击入</a>）在插件中心对应插件可查看使用说明，每个插件里都拥有使用说明。</span></strong></span></p></td>
+  </tr>
+</table>
+
+<div class="cards">
+    <div class="mbw cl">
+      <ul class="lib cl" id="dropdown-list">
+
+<!--开始-->
+
+
+<!--结束-->
+ 
+        
+		
+
+      </ul></div>
+    
+</div>
+<div class="load" id="load">
+	<div class="loader" title="升级中">
+		<svg version="1.1" id="loader-1"  x="0px" y="0px" width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+			<path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+				<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite" />
+			</path>
+		</svg>
+		<div class="load-msg"> 插件下载安装中<br />请勿关闭或退出<br />请稍后....</div>
+	</div>
+</div>
+
+<input type="hidden" id="ids" value="0">
+<input type="hidden" id="ver" value="">
+
+<script language="javascript" type="text/javascript">
+
+    function upgradecfm($version,$id) {
+        $('#ids').val($id);//给会话中的隐藏属性URL赋值
+		$('#ver').val($version);//给会话中的隐藏属性URL赋
+		var msg = "确认要进行升级吗？\n升级前请备份好数据！";
+			 if (confirm(msg)==true){
+				 
+		     $("#load").show();
+			 upgrade();
+			 }else{
+			 return false;
+			 }
+		
+    }
+    function upgrade() {
+        $(function(){
+            //请求参数
+            var list = {'id':$('#ids').val(),'ver':$('#ver').val()};
+            //
+            $.ajax({
+                //请求方式
+                type : "POST",
+                //请求的媒体类型
+                contentType: "application/json;charset=UTF-8",
+                //请求地址
+                url : "{:url('plug/upgrade')}",
+                //数据，json字符串
+                data : JSON.stringify(list),
+                //请求成功
+                success : function(result) {
+                    console.log(result);
+                    $data=result;
+                    //var jsarr=JSON.parse( $data );
+                    //var len = $data.total;
+                    //var len1 = result.rows;
+                    //var text='';
+                    //$('#ids').html($id);
+                    alert($data.msg);
+                    window.location.reload();
+                },
+                //请求失败，包含具体的错误信息
+                error : function(e){
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        });
+    }
+
+    $(function(){
+        //请求参数
+        var list = {'version':"4.5.1"};
+	
+        //
+        $.ajax({
+            //请求方式
+            type : "POST",
+            //请求的媒体类型
+            contentType: "application/json;charset=UTF-8;Content-Type: 'text/html'",
+            //请求地址,获取大于当前版本的列表
+            url : "{$upgrade.api_url}/api/plug/",
+            //数据，json字符串
+            data : JSON.stringify(list),
+            //请求成功
+            success : function(result) {
+                console.log(result);
+                $data=result;
+                //var jsarr=JSON.parse( $data );
+                var len = $data.total;
+                var data = result.rows;
+                var text='';
+				var version='';
+				
+				
+                for(let i in data){
+					text+='<li><div class="t">'
+					
+					var id =data[i]['id'];
+					var ver =data[i]['version'];
+					
+					var urll="{:checkplugnew("plug_id","ver")}";
+					
+					text+=urll.replace('plug_id',id).replace('ver',ver)
+                    text+='<p class="list_cjimg"><img src="'+data[i]['imgurl']+'" class="imga" alt="'+data[i]['money']+'"></p><h5>'+data[i]['title']+'('+data[i]['version']+')</h5>'
+					
+					if(data[i]['money']=='0.00')
+					{
+						
+					 text+='<h5><span class="price">¥'+data[i]['money']+'</span></h5><h6><em><i>安装次数:</i>'+data[i]['click']+'</em>  <a href="javascript:;" onclick="upgradecfm(&quot;'+data[i]['version']+'&quot;,'+data[i]['id']+')">免费安装</a></h6>'
+
+					}else{
+					text+='<h5><span class="price">¥'+data[i]['money']+'</span><a href="'+data[i]['buyurl']+'" target="_blank">购买</a></h5><h6><em><i>安装次数:</i>'+data[i]['click']+'</em>  <a href="javascript:;" onclick="upgradecfm(&quot;'+data[i]['version']+'&quot;,'+data[i]['id']+')">点击安装</a></h6>'
+					}
+					text+='</div></li>'
+                }
+                $('#dropdown-list').html(text);
+                //$('#ids').html($id);
+                //alert('成功！');
+                //window.location.href='/admin';
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    });
+</script>
+
+{/block}
+</body>
+</html>

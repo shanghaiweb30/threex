@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>{:sysconf('site_name')} - {:sysconf('site_subtitle')}</title>
+    <meta name="keywords" content="{:sysconf('site_keywords')}" />
+    <meta name="description" content="{:sysconf('site_desc')}" />
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <link rel="stylesheet" href="/static/muban/index/css/glide.css" />
+    <link rel="stylesheet" href="/static/muban/index/css/iconfont.css">
+    <link rel="stylesheet" href="/static/muban/index/css/animate.min.css">
+    <link rel="stylesheet" href="/static/muban/index/css/qietu.css">
+    <link rel="stylesheet" href="/static/muban/index/css/style.css">
+    <link rel="stylesheet" href="/static/muban/index/css/responsive.css">
+
+</head>
+<body>
+
+<header class="header">
+    <div style='margin: 0 5%;'>
+        <div class="hd-logo">
+            <a href="/"><img src="{:sysconf('site_logo')}" width="220px"></a>
+        </div>
+        <div class="nav-wp">
+            <div class="hd-btns"> 
+              {if session('?merchant.user')}
+              <a href="/merchant/index" class="login" >商户中心</a><a  href="/logout"  class="register">退出登录</a>
+                                        {else}
+                                <a href="/login" class="login">登录</a>  <a href="/register" class="register">注册</a>
+              {/if}
+          </div>
+            <div class="hd-nav">
+                <ul>
+{volist name="nav" id="vo"}
+            <li><a href="{$vo.url}" {eq name="vo.target" value="1"}target="_blank"{/eq}>{$vo.title}</a></li>
+            {/volist}
+                                    </ul>
+            </div>
+        </div>
+
+        <div class="gh">
+            <a href="#"></a>
+        </div>
+    </div>
+</header>
+
+<div class="hbanner">
+    <div class="wrapper">
+        <div class="txt wow fadeInUp">
+            <h2>全新发卡体验</h2>
+            <p>
+                致力于解决虚拟商品的快捷寄售服务<br />
+                商品管理、订单记录、收益统计、渠道分析... <br />
+                全响应式界面，简易操作，一站式寄售卡，为您稳定服务
+            </p>
+        </div>
+        <div class="btn wow fadeInUp" data-wow-delay = ".5s">
+            <a href="/register">立即入驻 &gt;</i></a>
+        </div>
+    </div>
+</div>
+<div class="hwho">
+    <div class="wrapper">
+        <div class="hwho-txt wow fadeInLeft">
+            <h2>我们是谁？</h2>
+            <p>快发卡自动发卡平台隶属于知名吧网络工作室致力于开发,打造,维护目前市场的电子商务平台系统。我们将引领的交易的个性化、自动化、工具化等。</p>
+            <p class="last-p">
+                作为业内善于创新的网站，力争成为行业的佼佼者。 我们承诺将秉承"客户至上"的经营理念，关注好每一个细节，不断完善用户体 验，优化安全机制，努力提升服务质量。 我们相信，在每位职员的努力下，开创性的交易时代即将来临。</p>
+            <a href="/register" class="btn g-buttn">立即成为商户</a>
+        </div>
+        <div class="hwho-img wow fadeInRight">
+            <img src="/static/muban/index/picture/img_10.png"/>
+        </div>
+    </div>
+</div>
+<div class="hhero">
+    <div class="wrapper">
+        <div class="hhero-hd g-hd wow fadeInUp">
+            <h2>核心优势技术实力</h2>
+        </div>
+        <div class="hhero-bd">
+            <ul class="clear">
+                <li>
+                    <div class="img">
+                        <i class="iconfont icon-diqiuyi"></i>
+                    </div>
+                    <div class="txt">
+                        <h2>服务全球</h2>
+                        <p>业务范围覆盖全国<br />
+                            用户遥遥领先</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                        <i class="iconfont icon-gengkuaijie-copy"></i>
+                    </div>
+                    <div class="txt">
+                        <h2>急速响应</h2>
+                        <p>
+                            全天候10秒响应服务<br />
+                            商户体验接近完美
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                        <i class="iconfont icon-fabu"></i>
+                    </div>
+                    <div class="txt">
+                        <h2>持续更新</h2>
+                        <p>
+                            系统持续更新<br />
+                            功能持续完善
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="img">
+                        <i class="iconfont icon-anquanbaozhang1"></i>
+                    </div>
+                    <div class="txt">
+                        <h2>资金保障</h2>
+                        <p>
+                            次日即可结算，您的<br />
+                            资金安全将得到充分保障
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="hsafe">
+    <div class="wrapper">
+        <div class="hpart-prev">
+            <i class="iconfont icon-zuo"></i>
+        </div>
+        <div class="hpart-list">
+            <div class="slider">
+                <ul class="slider__wrapper">
+                    <li class="slider__item">
+                        <div class="hsafe-img">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-zhuzhuangtu"></use>
+                            </svg>
+                        </div>
+                        <div class="hsafe-txt">
+                            <h2>加入商户终身陪伴</h2>
+                            <p>服务器集群部署，多重安全保证，是您创业路上的好帮手！ 系统持续更新，功能持续完善，让商户以及客户的体验不断接近完美是我们一直不变的追求！</p>
+                        </div>
+                        <div class="hsafe-btn">
+                            <a class="g-buttn" href="/register">加入我们</a>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="hsafe-img">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-wangye"></use>
+                            </svg>
+                        </div>
+                        <div class="hsafe-txt">
+                            <h2>界面简约自适应</h2>
+                            <p>简约的UI交互体验可以给您一个体验度极高的商户后台，更好的下单体验，零门槛注册，即刻打开致富之门！</p>
+                        </div>
+                        <div class="hsafe-btn">
+                            <a class="g-buttn" href="/register">加入我们</a>
+                        </div>
+                    </li>
+                    <li class="slider__item">
+                        <div class="hsafe-img">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-diannao"></use>
+                            </svg>
+                        </div>
+                        <div class="hsafe-txt">
+                            <h2>服务器安全有保障</h2>
+                            <p>采用群集服务器，防御高，故障率低，无论用户身在何处，均能获得流畅安全可靠的体验，全天候10秒响应服务打造强悍性能防御 技术服务支撑极速响应。</p>
+                        </div>
+                        <div class="hsafe-btn">
+                            <a class="g-buttn" href="/register">了解更多</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="hpart-next">
+            <i class="iconfont icon-you"></i>
+        </div>
+    </div>
+</div>
+<div class="hpay">
+    <div class="wrapper">
+        <div class="hpay-hd g-hd wow fadeInUp">
+            <h2>对接多家支付通道</h2>
+            <p>对接行业内最优质的多家家支付通道，通道优质稳定，全力保障业务流畅。</p>
+        </div>
+        <div class="hpay-bd wow fadeInUp">
+            <ul class="clear">
+                <li>
+                    <img src="/static/muban/index/picture/img_16.png"/>
+                    <h4>支付宝支付</h4>
+                </li>
+                <li>
+                    <img src="/static/muban/index/picture/img_17.png"/>
+                    <h4>微信支付</h4>
+                </li>
+                <li>
+                    <img src="/static/muban/index/picture/img_18.png"/>
+                    <h4>QQ钱包</h4>
+                </li>
+                <li>
+                    <img src="/static/muban/index/picture/img_19.png"/>
+                    <h4>银联支付</h4>
+                </li>
+                <li>
+                    <img src="/static/muban/index/picture/img_20.png"/>
+                    <h4>京东支付</h4>
+                </li>
+                <li>
+                    <img src="/static/muban/index/picture/img_21.png"/>
+                    <h4>百度钱包</h4>
+                </li>
+                <li>
+                    <img src="/static/muban/index/picture/img_22.png"/>
+                    <h4>Apple Pay</h4>
+                </li>
+                <li>
+                    <img src="/static/muban/index/picture/img_23.png"/>
+                    <h4>蚂蚁花呗</h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="hcontact ">
+    <div class="wrapper">
+        <div class="hcontact-hd g-hd wow fadeInUp">
+            <h2>快发卡·联系方式</h2>
+            <p>快发卡为您实现让发卡更加简单快捷！</p>
+        </div>
+        <div class="hcontact-bd wow fadeInUp">
+            <div class="hcontact-l ">
+                <ul>
+                    <li>
+                        <i class="iconfont icon-qq"></i>
+                        <label>客服QQ ：</label>
+                        8139306                    </li>
+                    <li>
+                        <i class="iconfont icon-msnui-telephone"></i>
+                        <label>咨询热线：</label>
+                        19974827182                    </li>
+                    <li>
+                        <i class="iconfont icon-htmal5icon05"></i>
+                        <label>联系邮箱：</label>
+                        kuaifaka@qq.com 						</li>
+                    <li>
+                        <i class="iconfont icon-dizhi"></i>
+                        <label>公司地址：</label>
+                        哈尔滨市道外区太古街道                    </li>
+                </ul>
+            </div>
+            <div class="hcontact-r ">
+                <img src="/static/muban/index/picture/img_25.jpg"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hft">
+    <div class="wrapper">
+        <div class="hft-txt">
+            <h2>为您提供一站式虚拟商品在线购买以及全自动发货服务!</h2>
+            <p>
+                采用群集式服务器，防御高，故障率低，无论用户身在何处，<br />
+                均能获得100%流畅安全可靠的体验。
+            </p>
+        </div>
+        <div class="hft-btn" >
+            <a class="g-buttn" href="/register">加入我们</a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer reg-footer">
+    <div class="wrapper">
+        <p>  {:sysconf('site_info_copyright')}        
+          <a style="color: #cedcf6;" href="javascript:void(0)" onclick="window.open('http://www.miitbeian.gov.cn/');" >
+                    {:htmlspecialchars_decode(sysconf('site_info_icp'))}</a>
+					</p>
+        <p>
+           	<a target="_blank" href="https://v.pinpaibao.com.cn/cert/site/?site=www.914ka.com&at=realname" ><img src="/static/muban/index/picture/sm_124x47.png"></img></a>
+<a target="_blank" href="https://v.pinpaibao.com.cn/cert/site/?site=www.914ka.com&at=realname" ><img src="/static/muban/index/picture/aqkx_124x47.png"></img></a>
+<!-- WPA start -->
+<!-- WPA start -->
+<!-- WPA end -->        </p>
+    </div>
+</footer>
+<script type="text/javascript" src="/static/muban/index/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/iconfont.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/wow.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.glide.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/script.js"></script>
+<script type="text/javascript" src="/static/app/js/layer.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.easydropdown.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.countdown.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+//		调用glide
+        var glide = $('.slider').glide({
+            arrows:false,
+            nav:false
+        }).data('api_glide');
+
+        $(".hpart-prev").click(function(){
+            glide.prev()
+        })
+        $(".hpart-next").click(function(){
+            glide.next()
+        })
+    })
+</script>
+<div style="display:none;">{:htmlspecialchars_decode(sysconf('site_statistics'))}</div> 
+</body>
+</html>

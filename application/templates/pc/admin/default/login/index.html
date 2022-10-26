@@ -1,0 +1,122 @@
+{extend name="./main"}
+
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/theme/default/css/login.css">
+        <link rel="stylesheet" href="__STATIC__/theme/default/css/basic.css">
+        <link rel="stylesheet" href="__STATIC__/theme/default/css/logina8tg.css">
+        <script type="text/javascript" src="__STATIC__/theme/default/js/jQuery.js"></script>
+        <script type="text/javascript" src="__STATIC__/theme/default/js/basic.js"></script>
+        <script type="text/javascript" src="__STATIC__/theme/default/js/app.js"></script>
+        <script type="text/javascript" src="__STATIC__/theme/default/js/particles.js"></script>
+{/block}
+
+{block name="body"}
+
+ <form onsubmit="return false;" data-time="0.001" data-auto="true" method="post"
+              class="content layui-form animated fadeInDown">
+            <div class="people">
+                <div class="tou"></div>
+                <div id="left-hander" class="initial_left_hand transition"></div>
+                <div id="right-hander" class="initial_right_hand transition"></div>
+            </div>
+            <ul>
+                <li>
+
+    <body>
+    	<div class="pagewrap">
+           <div class="website-modify">欢迎登录 {:sysconf('app_name')} 后台管理系统，您当前版本为： {:getVersion()}</div>
+    		<div class="main" id="screen">
+    			<div class="login-page dsj-login">
+    				<h3 class="platform-name">
+    					<i class="ico ico-logo"></i>
+    					{:sysconf('app_name')} 后台管理系统
+    				</h3>
+    				<div class="login-block">
+    					<div class="login-pop">
+    						<div class="login-body clearfix">
+    							<div class="login-info">
+                                    <div class="form-error">
+                                        <div class="msg-error">
+                                            <i class="btn btn-error"></i>
+                                           
+                                        </div>
+                                    </div>
+    								<div class="form-list">
+    									<div class="li">
+    										<div class="ele-wrap">
+    										 <input name='username' class="hide"/> <input required="required" pattern="^\S{4,}$" value="" name="username" autofocus="autofocus" autocomplete="off" class="login-input username form-control"  title="请输入4位及以上的字符" placeholder="请输入用户名/手机号码"/>
+    										</div>
+    									</div>
+    									<div class="li">
+    										<div class="ele-wrap">
+    									<input name='password' class="hide"/> <input required="required" pattern="^\S{4,}$" value="" name="password" type="password" autocomplete="off" class="login-input password form-control"  title="请输入4位及以上的字符" placeholder="请输入密码"/>
+    										</div>
+    									</div>
+    									<div class="li">
+                                            <div class="ele-wrap">
+                                                <div class="code-img">
+                                                   <img src="{:url("admin/login/verifycode",['t'=>time()])}" title="点击更换" alt="captcha" class="captcha_img" id="captcha_img" onclick="changeCode()" style="z-index:9999"/>
+                                                </div>
+                                                <div class="proving-code">
+                                                    <input name='captcha' class="hide"/> <input  pattern="^\S{4,}$" value="" name="code" type="text" autocomplete="off" class="login-input captcha form-control"  title="请输入验证码" placeholder="请输入验证码"/>
+                                                </div>
+                                            </div>
+                                        </div>
+    									<div class="li">
+    										<div class="ele-wrap">
+							                   
+							                    <button type="submit" class="btn btn-blue layui-btn layui-disabled" data-form-loaded="立 即 登 入">正 在 载 入</button>
+    										</div>
+    									</div>
+    								</div>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    				<div class="foot-record">
+                        Copyright © 2005-2022   
+                        <a class="record-num" target="_blank" href="{:getProhibit()}">
+	                        
+	                        <span>A8TG.COM</span></a>
+	              
+	                        
+	                
+              
+    		</div>
+    	</div>
+    </body>
+</html>
+<script>
+	$(function () {
+		var winH = $(window).height();
+		var starH = winH+50;
+		var starW = 998/998*starH;
+		$('.ico-star1').css({
+			'height':starH+'px',
+			'width': starW+'px'
+		});
+	});
+</script>
+
+{/block}
+
+{block name="script"}
+<div id="particles-js">	</div>
+<script>
+    if (window.location.href.indexOf('#') > -1) {
+        window.location.href = window.location.href.split('#')[0];
+    }
+    require(['jquery'], function ($) {
+        $('[name="password"]').on('focus', function () {
+            $('#left-hander').removeClass('initial_left_hand').addClass('left_hand');
+            $('#right-hander').removeClass('initial_right_hand').addClass('right_hand')
+        }).on('blur', function () {
+            $('#left-hander').addClass('initial_left_hand').removeClass('left_hand');
+            $('#right-hander').addClass('initial_right_hand').removeClass('right_hand')
+        });
+    });
+    function changeCode() {
+        $("#captcha_img").attr("src",'{:url("admin/login/verifycode")}?t='+new Date().getTime()+parseInt(40*Math.random()));
+    };
+</script>
+{/block}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>投诉查询 - {:sysconf('site_name')}</title>
+    <meta name="keywords" content="{:sysconf('site_keywords')}" />
+    <meta name="description" content="{:sysconf('site_desc')}" />
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+      <link rel="stylesheet" href="/static/muban/index/css/iconfont.css">
+    <link rel="stylesheet" href="/static/muban/index/css/animate.min.css">
+    <link rel="stylesheet" href="/static/muban/index/css/qietu.css">
+    <link rel="stylesheet" href="/static/muban/index/css/style.css">
+    <link rel="stylesheet" href="/static/muban/index/css/responsive.css">
+    <link rel="stylesheet" href="/static/muban/index/css/glide.css">
+    <style>
+        .footer {
+            position: absolute;
+        }
+    </style>
+</head>
+<body class="body-hgt">
+
+<header class="header">
+    <div style='margin: 0 5%;'>
+        <div class="hd-logo">
+           <a href="/"><img src="{:sysconf('site_logo')}" width="220px"/></a>
+        </div>
+        <div class="nav-wp">
+            <div class="hd-btns"> 
+              {if session('?merchant.user')}
+              <a href="/merchant/index" class="login" >商户中心</a><a  href="/logout"  class="register">退出登录</a>
+                                        {else}
+                                <a href="/login" class="login">登录</a>  <a href="/register" class="register">注册</a>
+              {/if}
+          </div>
+            <div class="hd-nav">
+                <ul>
+{volist name="nav" id="vo"}
+            <li><a href="{$vo.url}" {eq name="vo.target" value="1"}target="_blank"{/eq}>{$vo.title}</a></li>
+            {/volist}
+                                    </ul>
+            </div>
+        </div>
+
+        <div class="gh">
+            <a href="#"></a>
+        </div>
+    </div>
+</header>
+
+<div class="banner">
+    <div class="wrapper">
+        <h2>投诉查询</h2>
+    </div>
+</div>
+<div class="feedback feddback-on">
+    <div class="wrapper"> {if condition="!empty($complaint)"}
+        <form action="" method="post">
+            <ul>
+                <li>
+                    <label>订单编号</label>
+                    <input type="text" class="txt" readonly="readonly" name="" value="{$complaint->trade_no}"/>
+                </li>
+                <li>
+                    <label>举报原因</label>
+                    <input type="text" class="txt" readonly="readonly" name="" value="{$complaint->type}"/>
+                </li>
+                <li>
+                    <label>联系QQ</label>
+                    <input type="text" class="txt" name="" readonly="readonly" value="{$complaint->qq}" onclick=""/>
+                </li>
+                <li>
+                    <label>投诉时间</label>
+                    <input type="text" class="txt" name="" readonly="readonly" value="{$complaint.create_at|date='Y-m-d H:i:s', ###}"/>
+                </li>
+                <li>
+                    <label>投诉状态</label>
+               {if condition="$complaint->status == 0"}
+                <input readonly="readonly" class="txt" name="mobile" type="text" value="处理中">
+                {elseif condition="$complaint->status == -1"}
+                <input readonly="readonly" class="txt" name="mobile" type="text" value="已撤销">
+                {else /}
+                <input readonly="readonly" class="txt" name="mobile" type="text" value="已处理">
+                {/if}
+                                    </li>
+                <li>{if condition="$complaint->status == 0"}
+                                        <a href="#" onclick="cancel()" class="btn-off">撤销投诉</a> {/if}
+                                        <a href="#" class="btn-subm" onclick="detail()">投诉详情</a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+        <script>
+            function cancel() {
+                layer.prompt({title: '请输入投诉密码'}, function (pwd) {
+                    $.post("{:url('Index/Order/complaintCancel')}", {
+                        token: "{$token}",
+                        trade_no: "{$complaint->trade_no}",
+                        pwd: pwd
+                    }, function (data) {
+                        var extra = {icon: 1}
+                        if (data.code != '200') {
+                            extra = {icon: 2}
+                        }
+                        layer.msg(data.msg, extra, function () {
+                            location.reload();
+                        })
+                    });
+                });
+            }
+
+            function detail() {
+                layer.prompt({title: '请输入投诉密码'}, function (pwd) {
+                    $.post("{:url('Index/Order/complaintPass')}", {
+                        token: "{$token}",
+                        trade_no: "{$complaint->trade_no}",
+                        pwd: pwd
+                    }, function (data) {
+                        if (data.code != '200') {
+                            layer.msg(data.msg, {icon: 2})
+                        } else {
+                            layer.msg(data.msg, {icon: 1}, function () {
+                                location.href = data.url;
+                            })
+                        }
+
+                    });
+                });
+            }
+        </script>
+        {else /}
+		        <div style="display:block;text-align:center; font-size:24px;margin: 5rem 0;">订单不存在或该订单暂无投诉信息</div>
+        {/if}
+<footer class="footer reg-footer">
+    <div class="wrapper">
+        <p>  {:sysconf('site_info_copyright')}        
+          <a style="color: #cedcf6;" href="javascript:void(0)" onclick="window.open('http://www.miitbeian.gov.cn/');" >
+                    {:htmlspecialchars_decode(sysconf('site_info_icp'))}</a>
+					</p>
+        <p>
+
+<!-- WPA start -->
+<!-- WPA start -->
+<!-- WPA end -->        </p>
+    </div>
+</footer>
+<script type="text/javascript" src="/static/muban/index/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/iconfont.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/wow.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.glide.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/script.js"></script>
+<script type="text/javascript" src="__RES__/app/js/layer.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.easydropdown.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/jquery.countdown.min.js"></script>
+
+</body>
+</html>

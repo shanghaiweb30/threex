@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>订单查询 - {:sysconf('site_name')}</title>
+    <meta name="keywords" content="{:sysconf('site_keywords')}" />
+    <meta name="description" content="{:sysconf('site_desc')}" />
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <link rel="stylesheet" href="/static/muban/index/css/glide.css">
+    <link rel="stylesheet" href="/static/muban/index/css/iconfont.css">
+    <link rel="stylesheet" href="/static/muban/index/css/animate.min.css">
+    <link rel="stylesheet" href="/static/muban/index/css/qietu.css">
+    <link rel="stylesheet" href="/static/muban/index/css/style.css">
+    <link rel="stylesheet" href="/static/muban/index/css/responsive.css">
+    <style>
+        .hidden{display: none !important;}
+        .btn-native{position: relative !important;}
+    </style>
+</head>
+<body class="order-bg">
+
+<header class="header">
+    <div style='margin: 0 5%;'>
+        <div class="hd-logo">
+            <a href="/"><img src="/static/img/logo.png" width="220px"/></a>
+        </div>
+        <div class="nav-wp">
+                <div class="hd-btns"> 
+              {if session('?merchant.user')}
+              <a href="/merchant/index" class="login" >商户中心</a><a  href="/logout"  class="register">退出登录</a>
+                                        {else}
+                                <a href="/login" class="login">登录</a>  <a href="/register" class="register">注册</a>
+              {/if}
+          </div>
+            <div class="hd-nav">
+                <ul>
+{volist name="nav" id="vo"}
+            <li><a href="{$vo.url}" {eq name="vo.target" value="1"}target="_blank"{/eq}>{$vo.title}</a></li>
+            {/volist}
+                                    </ul>
+            </div>
+        </div>
+
+        <div class="gh">
+            <a href="#"></a>
+        </div>
+    </div>
+</header>
+    <link href="__RES__/app/default/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__RES__/app/default/css/style.css">
+    <link rel="stylesheet" href="__RES__/app/default/css/responsive.css">
+<script type="text/javascript" src="/static/muban/index/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/muban/index/js/script.js"></script>
+<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="100">
+<section class="shop_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 hero_text">
+                <h2 class="hero_title">全新体验</h2>
+                <p> 通过联系方式查询到的所有订单! </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blog_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="blog-section-left">
+                    {foreach $order as $v}
+                    <article class="blog-items">
+                        <div class="blog-content">
+                            <h2><a href="/orderquery/orderid/{$v.trade_no}/l/{:md5($v.trade_no . $sekey)}" target="_blank">{$v.trade_no}</a></h2>
+                            <p>{$v.goods_name} ¥{$v.goods_price} X {$v.quantity}</p>
+
+                        </div>
+                    </article>
+                    {/foreach}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{include file="./default_footer"}
+
+<script src="__RES__/app/default/js/jquery-2.2.1.min.js"></script>
+
+<script src="__RES__/plugs/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

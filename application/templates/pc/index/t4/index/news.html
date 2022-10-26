@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{:sysconf('site_name')}{:sysconf('site_subtitle')}</title>
+      <meta name="keywords" content="{:sysconf('site_keywords')}" />
+      <meta name="description" content="{:sysconf('site_desc')}" />
+      <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <!-- Bootstrap -->
+    <link href="__RES__/app/default/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__RES__/app/default/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__RES__/app/default/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="__RES__/app/default/vendors/themify-icon/themify-icons.css">
+    <!--custom css-->
+    <link rel="stylesheet" href="__RES__/app/default/css/style.css">
+    <link rel="stylesheet" href="__RES__/app/default/css/responsive.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+	body {background: #f8f8f8;}
+    #header .header_nav {background: #232A34;}
+    .dataTables_paginate>.pagination {float: right;}
+    .pageRemark {display: none;}
+
+	.new_list {padding: 10px 0;}
+    .new_list .content {margin-top: 10px;}
+	.new_list .content ul {margin: 0;padding: 0;list-style: none;}
+	.new_list .content ul li {padding: 12px 30px;border: 1px solid #dbdada;margin-bottom: 20px;transition: all .3s;}
+	.new_list .content ul li:hover {box-shadow: 2px 2px 4px 4px #ddd;}
+	.new_list .content ul li .new_title {color: #333;height: 30px;line-height: 30px;}
+	.new_list .content ul li .new_title a {font-size: 20px;color: #333;}
+	.new_list .content ul li .new_title span {color: #000;float: right;font-size: 16px;}
+	.new_list .content ul li p {font-size: 16px;color: #333;line-height: 24px;margin-top: 15px;}
+	.new_list .content ul li p a {color: #dc1e32;}
+	@media (max-width: 768px) {
+		.new_list .content ul li {padding: 8px 15px;position: relative;}
+		.new_list .content ul li .new_title {height: auto;line-height: normal;}
+		.new_list .content ul li .new_title a {font-size: 14px;position: relative;word-break: break-all;}
+		.new_list .content ul li .new_title span {position: absolute;right: 20px;bottom: 10px;font-size: 14px;color: #888;}
+	}
+</style>
+  </head>
+  <body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="100">
+  {include file="./default_header"}
+    <section class="shop_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 hero_text">
+                    <h2 class="hero_title">{$title}</h2>
+                    <p> {$title} / {$tab} </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <div id="about" class="new_list">
+    <div class="container">
+		<div class="content">
+			<ul>
+                {foreach $articles as $v}
+									<li>
+						<div class="new_title">
+							<a href="/article/{$v.id}" title="{$v.title}">[{$title}]&nbsp;{$v.title}</a>
+							<span>{$v.create_at|date='Y.m.d',###}</span>
+						</div>
+						<p name="digestP">
+							<a href="/article/{$v.id}">[查看详情]</a>
+						</p>
+					</li>
+                {/foreach}
+								
+							</ul>
+          
+		</div>
+{$page}
+</div>
+  {include file="./default_footer"}
+
+    <script src="__RES__/app/default/js/jquery-2.2.1.min.js"></script>
+
+    <script src="__RES__/plugs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__RES__/app/default/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="__RES__/app/default/js/wow.js"></script>
+    <script type="text/javascript" src="__RES__/app/default/js/custom.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{:sysconf('site_name')}{:sysconf('site_subtitle')}</title>
+      <meta name="keywords" content="{:sysconf('site_keywords')}" />
+      <meta name="description" content="{:sysconf('site_desc')}" />
+      <link rel="shortcut icon" href="{:sysconf('browser_icon')}" />
+    <!-- Bootstrap -->
+    <link href="__RES__/app/default/css/bootstrap.min.css?v=1.0.1" rel="stylesheet">
+    <link rel="stylesheet" href="__RES__/app/default/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__RES__/app/default/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="__RES__/app/default/vendors/themify-icon/themify-icons.css">
+    <!--custom css-->
+    <link rel="stylesheet" href="__RES__/app/default/css/style.css?v=1.0.1">
+    <link rel="stylesheet" href="__RES__/app/default/css/responsive.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="100">
+  {include file="./default_header"}
+    <section class="shop_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 hero_text">
+                    <h2 class="hero_title">关于我们</h2>
+                    <p> 常见问题解答，一次扫清所有疑问  </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="blog_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="blog-section">
+                        上海叁点零网络科技有限公司成立于2022年6月，是一家区块链高端定制的一站式服务提供商，总部位于上海。公司拥有专业技术研发团队，核心人员。
+                        均拥有业内知名企业背景，在行业领域具备丰富的实践经验。
+                        我们不光是一家技术公司，并可为区块链建设的甲方和乙方提供信息,
+                        更是一家集策划、统全生命周期质量保障服务。咨询、落地、运营为一体的公司。
+                        我们主要专注于区块链项目开发、区块链积分、区块链存证溯源、数字藏品系统开发、移动APP开发、物联网开发、小程序开发、行业软件系统开发等软件系统开发。
+                        <br><br>
+                        我们不仅仅是一家公司，更是一群有区块链理想的实践者。不用考虑区块链能给我们带来什么，要考虑区块链能给人类
+                        和社会带来什么，以及我们能给区块链带来什么。
+                        以区块链为代表的去中心化技术簇的兴起是社会发展的必然，让我们拥抱变化，勇敢探索，为人类开创更美好的未来。
+                        <br><br>
+                        我们看到的未来
+                        区块链只是一个点,去中心化技术（可信计算）簇是一个面,人类可以跨越地域、时间,种族等差异更加开放、平等、
+                        自由的协作才是我们看到的未来,而且这样的协作可以以自下而上的方式自发的形成并演化，我们相信开放的远离平衡 态的组织可以通过超循环、协同作用和突变进程在涨落中实现熵减，形成有序，我们相信在人类智力开发水平空前提高 的当下和未来，这样的组织将成为人类协作的新形态。
+                        区块链信仰是即是自组织的信仰，是自由人文主义的信仰最终是人类命运共同体的信仰。我们就是在这样的信念下
+                        诞生的，区块链行业、人类协作形态的变革才刚刚开始，我们肩付使命，努力实践，不管将来还要遇到怎样的困难，我 们都有信心，因为我们看到了未来。
+                        <br><br>
+                        <div class="order_form">
+
+                            <div class="clear"></div>
+                            <div class="main_box">
+                                <div class="contact_left" style="padding-top: 10px"><img src="{:sysconf('site_info_qrcode')}" width="130px" height="130px"><br><div style="max-width: 220px;">{$site_info_qrcode_desc}</div></div>
+                                <div class="contact_right">
+                                    <p><i class="fa fa-qq"></i>企业QQ：<font>{:sysconf('site_info_qq')} </font>(早9点30-晚23点)</p>
+
+                                    <p><i class="fa fa-phone"></i>联系电话：<font>{:sysconf('site_info_tel')} </font>(早9点-晚17点)</p>
+                                    <p><i class="fa fa-envelope"></i>联系邮箱：<font>{:sysconf('site_info_email')} </font>{:sysconf('site_info_email_desc')}</p>
+                                    <!-- <p><i class="fa fa-comment"></i>公司地址：{:sysconf('site_info_address')}</p> -->
+                                    <p> 售后问题联系客服！</p>
+
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  {include file="./default_footer"}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="__RES__/app/default/js/jquery-2.2.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__RES__/plugs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__RES__/app/default/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="__RES__/app/default/js/wow.js"></script>
+    <script type="text/javascript" src="__RES__/app/default/js/custom.js"></script>
+  </body>
+</html>
